@@ -1,0 +1,51 @@
+FORMAT: 1A
+HOST: http://www.hdmng.com/API
+
+# Hivedome Web Api
+
+## Allowed HTTPs requests:
+
+    POST   :   To create a resource
+    GET    :   Get a resource or list of resources
+    DELETE :   To delete resource
+    PUT    :   To update a resource
+
+## Description Of Usual Server Responses
+
+- 200 `OK` - the request was successful.
+- 201 `Created` - the request was successful and a resource was created.
+- 204 `No Content` - the request was successful but there is no representation to return (i.e. the response is empty).
+- 400 `Bad Request` - the request could not be understood or was missing required parameters.
+- 401 `Unauthorized` - authentication failed or user doesn't have permissions for requested operation.
+- 403 `Forbidden` - access denied.
+- 404 `Not Found` - resource was not found
+- 405 `Method Not Allowed` - requested method is not supported for resource.
+
+
+
+# Group User API
+List of All User API.
+
+
+## User Authorization  [/GetUserTradingEntity?clientName={clientName}&userName={UserName}]
+### Get List of Trading Entity Details for User. [GET]
++ Parameters
+    + clientName (required, String, `ClientA`) ... Client Name: Client is accessing Web Api.
+    + UserName (required, String, `UserName`) ... ITAS Username 
+
++ Request (application/json)
+
+        {
+            "hmac: "Value"
+        }
++ Response 200 (application/json)
+ 
+
+        [
+          {"TradingEntitycode":"ab","TradingEntityName":"Test Company - restriced Access","ReadOnlyAccess":true,"WriteAccess":true},
+          {"TradingEntitycode":"ac","TradingEntityName":"Test Company C - Physicals Hedge","ReadOnlyAccess":false,"WriteAccess":false},
+          {"TradingEntitycode":"ad","TradingEntityName":"Test Company D - Physicals Produce","ReadOnlyAccess":true,"WriteAccess":true},
+          {"TradingEntitycode":"af","TradingEntityName":"Test Company Type H - Accounting","ReadOnlyAccess":true,"WriteAccess":false},
+          {"TradingEntitycode":"bj","TradingEntityName":"BJSS Test Company","ReadOnlyAccess":true,"WriteAccess":true},
+          {"TradingEntitycode":"gf","TradingEntityName":"General Functions (MASTCOPY@31Jan)","ReadOnlyAccess":true,"WriteAccess":true}
+        ]
